@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Help Exchange</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background: #fbf8f1;
+        }
+
+        .home-hero {
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+            padding: 75px 8%;
+            background: linear-gradient(120deg, #fbf8f1 55%, #e5f0e9 100%);
+        }
+
+        .hero-content {
+            max-width: 580px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 30px;
+            background: #e1eee8;
+            color: #176b67;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            color: #10534f;
+            font-size: clamp(36px, 5vw, 54px);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: #647773;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .hero-buttons .btn {
+            padding: 13px 25px;
+            border-radius: 9px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            max-width: 420px;
+        }
+
+        .hero-visual .card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(23, 107, 103, 0.1);
+            border-top: 5px solid #f4a28c;
+        }
+
+        .hero-visual h3 {
+            color: #176b67;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .hero-visual p {
+            color: #71817e;
+            line-height: 1.8;
+        }
+
+        .hero-visual strong {
+            color: #176b67;
+        }
+
+        .section {
+            padding: 65px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            color: #10534f;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #71817e;
+        }
+
+        .home-card {
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #edf0eb;
+        }
+
+        .home-card h3 {
+            color: #176b67;
+            margin-bottom: 12px;
+        }
+
+        .home-card p {
+            color: #71817e;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .step-number {
+            color: #f4a28c;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .action-section {
+            background: #eaf2ec;
+        }
+
+        .action-card {
+            border-radius: 16px;
+        }
+
+        .action-card .btn {
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 850px) {
+            .home-hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 55px 7%;
+            }
+
+            .hero-visual {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .home-hero {
+                padding: 45px 6%;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 15px;
+            }
+
+            .section {
+                padding: 45px 6%;
+            }
+
+            .section-heading h2 {
+                font-size: 27px;
+            }
+
+            .hero-visual .card {
+                padding: 28px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">HelpExchange.</a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="browse.php">Browse Help</a></li>
+                <li><a href="offer-help.html">Offer Help</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html" class="btn btn-primary">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="home-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-tag">A COMMUNITY THAT CARES</span>
+
+            <h1>Small Acts of Help. Stronger Communities.</h1>
+
+            <p>
+                Connect with people around you, ask for support,
+                share your skills and make a difference.
+                Because everyone has something to give.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="browse.php" class="btn btn-primary">
+                    Find Help
+                </a>
+
+                <a href="offer-help.html" class="btn btn-secondary">
+                    Offer Help
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="card">
+                <h3>Community starts with you.</h3>
+
+                <p>
+                    Share knowledge, exchange skills and support
+                    people who need a helping hand.
+                </p>
+
+                <p>
+                    <strong>Give a little. Gain a lot.</strong>
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+
+        <div class="section-heading">
+            <h2>How It Works</h2>
+            <p>Getting involved is simple.</p>
+        </div>
+
+        <div class="card-grid">
+
+            <div class="home-card">
+                <div class="step-number">STEP 01</div>
+                <h3>Join the Community</h3>
+                <p>
+                    Create an account and become part of a
+                    supportive network.
+                </p>
+            </div>
+
+            <div class="home-card">
+                <div class="step-number">STEP 02</div>
+                <h3>Ask or Offer</h3>
+                <p>
+                    Post something you need help with or share
+                    a skill you can offer.
+                </p>
+            </div>
+
+            <div class="home-card">
+                <div class="step-number">STEP 03</div>
+                <h3>Connect and Help</h3>
+                <p>
+                    Connect with other members and make
+                    meaningful exchanges.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Community Actions -->
+    <section class="section action-section">
+
+        <div class="section-heading">
+            <h2>Be Part of the Change</h2>
+            <p>Every contribution matters.</p>
+        </div>
+
+        <div class="card-grid">
+
+            <div class="home-card action-card">
+                <h3>Need a Helping Hand?</h3>
+
+                <p>
+                    Browse community requests and find
+                    someone who can support you.
+                </p>
+
+                <a href="browse.php" class="btn btn-primary">
+                    Explore Requests
+                </a>
+            </div>
+
+            <div class="home-card action-card">
+                <h3>Have Something to Share?</h3>
+
+                <p>
+                    Your time, knowledge and skills can
+                    make someone's day easier.
+                </p>
+
+                <a href="offer-help.html" class="btn btn-secondary">
+                    Share Your Skills
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><strong>Community Help Exchange</strong></p>
+        <p>Together, we make helping easier.</p>
+    </footer>
+
+</body>
+</html>

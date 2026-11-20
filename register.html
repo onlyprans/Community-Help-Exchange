@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Community Help Exchange</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .auth-wrapper {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 45px 20px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .auth-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #fce8df;
+            color: #176b67;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+        }
+
+        .auth-card h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .auth-description {
+            text-align: center;
+            margin-bottom: 28px;
+            color: #666;
+        }
+
+        .auth-card .form-group {
+            margin-bottom: 18px;
+        }
+
+        .auth-card input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 7px;
+        }
+
+        .auth-card button {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 480px) {
+            .auth-card {
+                padding: 28px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                Community Help Exchange
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="auth-wrapper">
+        <section class="auth-card">
+
+            <div class="auth-icon">♡</div>
+
+            <h1>Create an Account</h1>
+
+            <p class="auth-description">
+                Join your community and start helping others.
+            </p>
+
+            <form id="registerForm">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Minimum 8 characters"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="registerButton"
+                >
+                    Create Account
+                </button>
+
+                <p id="message"></p>
+
+            </form>
+
+            <p class="auth-footer">
+                Already have an account?
+                <a href="login.html">Login here</a>
+            </p>
+
+        </section>
+    </main>
+
+    <script>
+        const registerForm = document.getElementById("registerForm");
+        const message = document.getElementById("message");
+        const registerButton = document.getElementById("registerButton");
+
+        registerForm.addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            message.textContent = "Creating your account...";
+            registerButton.disabled = true;
+            registerButton.textContent = "Registering...";
+
+            const userData = {
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                password: document.getElementById("password").value
+            };
+
+            try {
+                const response = await fetch("api/register.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                const responseText = await response.text();
+
+                console.log("HTTP Status:", response.status);
+                console.log("Server Response:", responseText);
+
+                let result;
+
+                try {
+                    result = JSON.parse(responseText);
+                } catch (parseError) {
+                    throw new Error(
+                        "Server returned an invalid response. Check PHP errors."
+                    );
+                }
+
+                if (!response.ok || !result.success) {
+                    message.textContent =
+                        result.message || "Registration failed.";
+                    return;
+                }
+
+                message.textContent =
+                    "Registration successful! Redirecting to login...";
+
+                setTimeout(function() {
+                    window.location.href = "login.html";
+                }, 1000);
+
+            } catch (error) {
+                console.error("Registration error:", error);
+                message.textContent = "Error: " + error.message;
+
+            } finally {
+                registerButton.disabled = false;
+                registerButton.textContent = "Create Account";
+            }
+        });
+    </script>
+
+</body>
+</html>
