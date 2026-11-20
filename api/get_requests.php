@@ -7,7 +7,7 @@ require_once "../config/db.php";
 
 try {
 
-    $stmt = $conn->prepare(
+    $stmt = $pdo->prepare(
         "SELECT
             r.id,
             r.title,

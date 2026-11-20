@@ -61,7 +61,7 @@ if ($preferred_date !== "") {
 }
 
 try {
-    $stmt = $conn->prepare(
+    $stmt = $pdo->prepare(
         "INSERT INTO help_requests
         (user_id, title, description, category, location, preferred_date)
         VALUES (?, ?, ?, ?, ?, ?)"
@@ -79,7 +79,7 @@ try {
     echo json_encode([
         "success" => true,
         "message" => "Help request posted successfully!",
-        "request_id" => $conn->lastInsertId()
+        "request_id" => $pdo->lastInsertId()
     ]);
 
 } catch (PDOException $e) {
